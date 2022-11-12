@@ -60,7 +60,7 @@ const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [
 const setLocalStorage = (dbClient) => JSON.stringify(localStorage.setItem('db_client'));
 
 const createClient(client) {
-    const dbClient = getLocalStorage;
+    const dbClient = getLocalStorage();
     dbClient.push(client);
     
     // Atualizar o banco
