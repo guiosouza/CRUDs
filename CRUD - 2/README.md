@@ -116,4 +116,101 @@ const deleteClient = (index) => {
   setLocalStorage(dbClient);
 }
 ```
+# 5) FRONT
 
+```js
+
+
+const isValidFields = () => {
+
+  // Pega o elemento que tem id form, e veja se os elementos HTML estão preenchidos
+  return document.getElementById('form').reportValidity();
+}
+
+
+// Limpar campos
+const clearFields = () => {
+
+  // Criar um array fields, pegando todos elementos de classe .modal-fields
+  fields = document.querySelectorAll('.modal-field');
+  
+  // Para cada item do fields, pegar o valor dele e deixar nulo
+  fields.forEach(field => field.value = '');
+}
+
+// Interação com o layout
+const saveClient = () => {
+  
+  // Verificar se os campos estão preenchidos
+  if(isValidFields()) {
+    
+    // Cliente é um JSON para enviar ao banco
+    // Abaixo vamos pegar os dados vindos do front pelos ids e inseri-los
+    const client = {
+      nome: document.getElementById('nome').value;
+      email: document.getElementById('email').value;
+      celular: document.getElementById('celular').value;
+      cidade: document.getElementById('cidade').value;
+    }
+    
+    // Agora adicionar o cliente:
+    createClient(client);
+    clearFields();
+    closeModal();
+  }
+}
+
+const createRow = (client) => {
+  const newRow = document.createElement('tr');
+  newRow.innerHTML = `
+        <td>${client.nome}</td>
+        <td>${client.email}</td>
+        <td>${client.celular}</td>
+        <td>${client.cidade}</td>
+        <td>
+            <button type="button" class="button green" id="edit-${index}">Editar</button>
+            <button type="button" class="button red" id="delete-${index}" >Excluir</button>
+        </td>
+  `
+  document.querySelector('#tableClient>tbody').appenChild(newRow);
+}
+
+const clearTable = () => {
+  // Pego tableClient dentro a tbody e dentro a tr (isso é um array de elementos)
+  const rows = document.querySelectorAll('#tableClient>tbody tr');
+  
+  rows.forEach(row => row.parentNode.removeChild(row));
+}
+
+const updateTable = () => {
+  // Ler os dados
+  const dbClient = readClient();
+  clearTable();
+  // Criar uma linha para cada um dos clientes
+  dbClient.forEach(createRow);
+}
+
+updateTable();
+
+// Eventos
+
+const openModal = () => document.getElementById('modal')
+    .classList.add('active')
+
+const closeModal = () => {
+    // Limpar os campos, sempre que a janela for fechada
+    clearFields();
+    document.getElementById('modal').classList.remove('active')
+}
+
+document.getElementById('cadastrarCliente')
+  .addEventListener('click' openModal)
+  
+document.getElementById('modalClose')
+  .addEventListener('click' closeModal)
+  
+document.getElementById('modalClose')
+  .addEventListener('click' saveClient)
+  
+
+```
