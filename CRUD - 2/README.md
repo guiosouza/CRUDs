@@ -44,10 +44,26 @@ Vamos melhorar o código acima, pois pode acontecer do banco de dados estar vazi
 const createClient(client) {
   
   // O localStorage está vazio? Caso sim, recebe um array vazio []
-  const dbClient = JSON.parse(localStorage.getItem('dbClient')) ?? [] ;
+  const dbClient = JSON.parse(localStorage.getItem('dbClient')) ?? [];
   
   dbClient.push(client)
   
   localStorage.setItem('dbClient', JSON.stringify(dbClient));
+}
+```
+
+Agora pegamos o conteúdo de algumas variáveis e transformamos em funções. Bora deixar o código mais limpo:
+
+```js
+
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [];
+const setLocalStorage = (dbClient) => JSON.stringify(localStorage.setItem('db_client'));
+
+const createClient(client) {
+    const dbClient = getLocalStorage;
+    dbClient.push(client);
+    
+    // Atualizar o banco
+    setLocalStorage(dbClient);
 }
 ```
