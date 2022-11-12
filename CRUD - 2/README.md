@@ -57,7 +57,7 @@ Agora pegamos o conteúdo de algumas variáveis e transformamos em funções. Bo
 ```js
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [];
-const setLocalStorage = (dbClient) => JSON.stringify(localStorage.setItem('db_client'));
+const setLocalStorage = (dbClient) => JSON.stringify(localStorage.setItem("db_client" JSON.stringify(dbClient'));
 
 const createClient(client) {
     const dbClient = getLocalStorage();
