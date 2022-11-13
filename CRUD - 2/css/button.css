@@ -11,10 +11,12 @@
 
 .button.blue{
     background-color: #1FB6FF;
+    border-radius: 5px;
 }
 
 button.green{
     background-color: #13CE66;
+    border-radius: 5px;
 }
 
 button.red{

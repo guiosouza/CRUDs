@@ -1,9 +1,9 @@
-const modal = document.querySelector('.modal-container')
-const tbody = document.querySelector('tbody')
-const sNome = document.querySelector('#m-nome')
-const sFuncao = document.querySelector('#m-funcao')
-const sSalario = document.querySelector('#m-salario')
-const btnSalvar = document.querySelector('#btnSalvar')
+const modal = document.querySelector('.modal-container');
+const tbody = document.querySelector('tbody');
+const sNome = document.querySelector('#m-nome');
+const sFuncao = document.querySelector('#m-funcao');
+const sSalario = document.querySelector('#m-salario');
+const btnSalvar = document.querySelector('#btnSalvar');
 
 let itens // armazena itens do banco
 let id // index
@@ -46,7 +46,9 @@ function deleteItem(index) {
 // For para inserir na tabela
 function insertItem(item, index) {
     let tr = document.createElement('tr')
+
     tr.innerHTML = `
+    <td>${index}</td>
     <td>${item.nome}</td>
     <td>${item.funcao}</td>
     <td>R$ ${item.salario}</td>

@@ -4,11 +4,19 @@
     text-align: left;
 }
 
-.records th{
+.records th {
     height: 50px;
     background-color: var(--primary-color);
     padding-left: 20px;
     font-size: 1.2rem;    
+}
+
+#name {
+    border-radius: 5px 0px 0px 5px;
+}
+
+#action {
+    border-radius: 0px 5px 5px 0px;
 }
 .records td{
     height: 50px;

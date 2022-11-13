@@ -27,8 +27,11 @@ const updateClient = (index, client) => {
 
 const readClient = () => getLocalStorage()
 
+// - Função que vai receber um cliente como parâmetro:
 const createClient = (client) => {
+
     const dbClient = getLocalStorage()
+    // Envia um client (objeto) para o array dbClient
     dbClient.push (client)
     setLocalStorage(dbClient)
 }
@@ -38,7 +41,6 @@ const isValidFields = () => {
 }
 
 //Interação com o layout
-
 const clearFields = () => {
     const fields = document.querySelectorAll('.modal-field')
     fields.forEach(field => field.value = "")
