@@ -117,6 +117,10 @@ const deleteClient = (index) => {
 }
 ```
 # 5) FRONT
+Agora vamos tratar do seguinte:
+- Criar funções para pegar os elementos do localStorage e gerar dados em HTML para serem exibidos no front;
+- Limpar certos campos ao ter atualizações para melhorar a experiência do usuário;
+- Associar os botões e campos do front com variáveis do localStorage
 
 ```js
 
@@ -155,7 +159,7 @@ const saveClient = () => {
     
     // Agora adicionar o cliente:
     createClient(client);
-    clearFields();
+    updateTable();
     closeModal();
   }
 }
@@ -204,13 +208,23 @@ const closeModal = () => {
 }
 
 document.getElementById('cadastrarCliente')
-  .addEventListener('click' openModal)
+  .addEventListener('click' openModal);
   
 document.getElementById('modalClose')
-  .addEventListener('click' closeModal)
+  .addEventListener('click' closeModal);
   
 document.getElementById('modalClose')
-  .addEventListener('click' saveClient)
+  .addEventListener('click' saveClient);
+
+// Pegar o tbody que é filho do tableClient:
+document.querySelector(#tableClient>tbody)
+  .addEventListener('click', editDelete);
+
+const editDelete = (event) => {
   
+  if(event.target.type == 'button') {
+  
+  }
+}
 
 ```
